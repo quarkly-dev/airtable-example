@@ -118,7 +118,6 @@ const EmployeeCard = props => {
 	const {
 		employee = {}
 	} = rest;
-	console.log(employee);
 	return <StackItem {...rest}>
 		<Override slot="StackItemContent" flex-direction="column" />
 		<Box {...override("box")} background-image={`url(${employee.Photo[0].url})`} />

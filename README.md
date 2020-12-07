@@ -15,6 +15,11 @@
     <img src="https://badgen.net/badge/Gatsby/2.23.12/purple" alt="Gatsby version" />
   </a>
   
+   <a href="https://github.com/quarkly-dev/airtable-example/pulls">
+     <img src="https://badgen.net/github/prs/quarkly-dev/airtable-example" alt="Pull Request Amount">
+   </a>
+   <img src="https://badgen.net/github/last-commit/quarkly-dev/airtable-example" alt="Last commit date" />
+    
   <a href="./LICENSE">
     <img src="https://badgen.net/badge/license/MIT/blue" alt="License">
   </a>
