@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Airtable from "airtable";
 import { useOverrides, Stack } from "@quarkly/components";
 import EmployeeCard from "./EmployeeCard";
+const base = new Airtable({
+	apiKey: 'keyfXFTNzyz4R8sID'
+}).base('appWw7KBKSc9bPjZE');
 const defaultProps = {
 	"margin-top": "40px"
 };
@@ -12,16 +16,21 @@ const StaffTable = props => {
 	} = useOverrides(props, overrides, defaultProps);
 	const [employees, setEmployees] = useState([]);
 	useEffect(() => {
-		fetch("https://api.airtable.com/v0/appWw7KBKSc9bPjZE/Employee%20directory?view=All%20employees", {
-			headers: {
-				'Authorization': 'Bearer keyfXFTNzyz4R8sID'
-			}
-		}).then(response => response.json()).then(data => setEmployees(data.records.map(({
-			fields
-		}) => fields)));
+		base('Employee directory').select({
+			view: "All employees"
+		}).all((err, records) => {
+			console.log(records);
+			setEmployees(records.map(({
+				id,
+				fields
+			}) => ({
+				id,
+				...fields
+			})));
+		});
 	}, []);
 	return <Stack {...rest}>
-		{employees.map(employee => <EmployeeCard employee={employee} />)}
+		{employees.map(employee => <EmployeeCard key={employee.id} employee={employee} />)}
 	</Stack>;
 };
 

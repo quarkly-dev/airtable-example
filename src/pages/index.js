@@ -34,6 +34,7 @@ export default (() => {
 			>
 				The smartest people work every day to provide the best service and to make our clients happy
 			</Text>
+			<Components.Form />
 			<Components.StaffTable>
 				<Components.EmployeeCard />
 			</Components.StaffTable>

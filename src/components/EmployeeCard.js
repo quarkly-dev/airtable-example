@@ -118,9 +118,12 @@ const EmployeeCard = props => {
 	const {
 		employee = {}
 	} = rest;
+
+	const getUrl = employee => Array.isArray(employee.Photo) && employee.Photo[0] && employee.Photo[0].url;
+
 	return <StackItem {...rest}>
 		<Override slot="StackItemContent" flex-direction="column" />
-		<Box {...override("box")} background-image={`url(${employee.Photo[0].url})`} />
+		<Box {...override("box")} background-image={`url(${getUrl(employee)})`} />
 		<Text {...override("title")} children={employee.Title} />
 		<Text {...override("name")} children={employee.Name} />
 		<Text {...override("location")} children={employee.Location} />
