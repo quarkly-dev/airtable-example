@@ -2,7 +2,7 @@ import React from "react";
 import theme from "theme";
 import { Theme, Link, Text } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
-import { Section } from "@quarkly/components";
+import { StackItem, Stack, Section } from "@quarkly/components";
 import * as Components from "components";
 export default (() => {
 	return <Theme theme={theme}>
@@ -34,10 +34,22 @@ export default (() => {
 			>
 				The smartest people work every day to provide the best service and to make our clients happy
 			</Text>
-			<Components.Form />
-			<Components.StaffTable>
-				<Components.EmployeeCard />
-			</Components.StaffTable>
+			<Stack>
+				{"    "}
+				<StackItem width="30%" display="flex">
+					{"        "}
+					<Components.Form />
+					{"    "}
+				</StackItem>
+				{"    "}
+				<StackItem width="70%" display="flex">
+					{"        "}
+					<Components.StaffTable>
+						<Components.EmployeeCard />
+					</Components.StaffTable>
+					{"    "}
+				</StackItem>
+			</Stack>
 		</Section>
 		<Link
 			font={"--capture"}
